@@ -10,7 +10,7 @@
 
 #include "ecole/observation/hutter-2011.hpp"
 #include "ecole/observation/khalil-2016.hpp"
-#include "ecole/observation/milpbipartite.hpp"
+#include "ecole/observation/focusnode.hpp"
 #include "ecole/observation/nodebipartite.hpp"
 #include "ecole/observation/nothing.hpp"
 #include "ecole/observation/pseudocosts.hpp"
@@ -152,6 +152,32 @@ void bind_submodule(py::module_ const& m) {
 	)");
 	def_before_reset(node_bipartite, "Cache some feature not expected to change during an episode.");
 	def_extract(node_bipartite, "Extract a new :py:class:`NodeBipartiteObs`.");
+
+	// Focus node observation
+	py::class_<FocusNodeObs>(m, "FocusNodeObs", R"(
+		Add description.
+	)")  //
+		.def_property_readonly(
+			"number", [](FocusNodeObs & self) -> auto& { return self.number; }, "Add description.")
+		.def_property_readonly(
+			"depth", [](FocusNodeObs & self) -> auto& { return self.depth; }, "Add description.")
+		.def_property_readonly(
+			"lowerbound", [](FocusNodeObs & self) -> auto& { return self.lowerbound; }, "Add description.")
+		.def_property_readonly(
+			"estimate", [](FocusNodeObs & self) -> auto& { return self.estimate; }, "Add description.")
+		.def_property_readonly(
+			"n_added_conss", [](FocusNodeObs & self) -> auto& { return self.n_added_conss; }, "Add description.")
+		.def_property_readonly(
+			"parent_number", [](FocusNodeObs & self) -> auto& { return self.parent_number; }, "Add description.")
+		.def_property_readonly(
+			"parent_lowerbound", [](FocusNodeObs & self) -> auto& { return self.parent_lowerbound; }, "Add description.");
+
+	auto focus_node = py::class_<FocusNode>(m, "FocusNode", R"(
+ 		Returns data of the current node (focus node).
+ 	)");
+	focus_node.def(py::init<>());
+	def_reset(focus_node, R"(Do nothing.)");
+	def_obtain_observation(focus_node, "Extract a new :py:class:`FocusNodeObs`.");
 
 	// MILP bipartite observation
 	auto milp_bipartite_obs =

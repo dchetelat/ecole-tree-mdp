@@ -43,3 +43,8 @@ Hutter et al. 2011
 ^^^^^^^^^^^^^^^^^^
 .. autoclass:: ecole.observation.Hutter2011
 .. autoclass:: ecole.observation.Hutter2011Obs
+
+Focus Node
+^^^^^^^^^^^^^^
+.. autoclass:: ecole.observation.FocusNode
+.. autoclass:: ecole.observation.FocusNodeObs
