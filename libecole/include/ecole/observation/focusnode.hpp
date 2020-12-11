@@ -21,7 +21,7 @@ public:
 class FocusNode : public ObservationFunction<std::optional<FocusNodeObs>> {
 public:
 	using Observation = std::optional<FocusNodeObs>;
-	Observation obtain_observation(scip::Model& model) override;
+	Observation extract(scip::Model& model, bool done) override;
 };
 
 }  // namespace ecole::observation

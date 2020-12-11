@@ -8,7 +8,7 @@
 
 namespace ecole::observation {
 
-std::optional<FocusNodeObs> FocusNode::obtain_observation(scip::Model& model) {
+std::optional<FocusNodeObs> FocusNode::extract(scip::Model& model, bool /* done */) {
 
 	if (model.get_stage() == SCIP_STAGE_SOLVING) {
 		SCIP* scip = model.get_scip_ptr();

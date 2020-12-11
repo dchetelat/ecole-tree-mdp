@@ -176,8 +176,8 @@ void bind_submodule(py::module_ const& m) {
  		Returns data of the current node (focus node).
  	)");
 	focus_node.def(py::init<>());
-	def_reset(focus_node, R"(Do nothing.)");
-	def_obtain_observation(focus_node, "Extract a new :py:class:`FocusNodeObs`.");
+	def_before_reset(focus_node, R"(Do nothing.)");
+	def_extract(focus_node, "Extract a new :py:class:`FocusNodeObs`.");
 
 	// MILP bipartite observation
 	auto milp_bipartite_obs =
