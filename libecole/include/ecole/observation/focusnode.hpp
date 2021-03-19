@@ -14,6 +14,9 @@ public:
 	double lowerbound;
 	double estimate;
 	int n_added_conss;
+	int n_vars;
+	int nlpcands;
+	int npseudocands;
 	long long parent_number;
 	double parent_lowerbound;
 };

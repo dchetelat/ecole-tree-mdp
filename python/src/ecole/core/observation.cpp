@@ -168,6 +168,12 @@ void bind_submodule(py::module_ const& m) {
 		.def_property_readonly(
 			"n_added_conss", [](FocusNodeObs & self) -> auto& { return self.n_added_conss; }, "Add description.")
 		.def_property_readonly(
+			"n_vars", [](FocusNodeObs & self) -> auto& { return self.n_vars; }, "Add description.")
+		.def_property_readonly(
+			"nlpcands", [](FocusNodeObs & self) -> auto& { return self.nlpcands; }, "Add description.")
+		.def_property_readonly(
+			"npseudocands", [](FocusNodeObs & self) -> auto& { return self.npseudocands; }, "Add description.")
+		.def_property_readonly(
 			"parent_number", [](FocusNodeObs & self) -> auto& { return self.parent_number; }, "Add description.")
 		.def_property_readonly(
 			"parent_lowerbound", [](FocusNodeObs & self) -> auto& { return self.parent_lowerbound; }, "Add description.");
