@@ -103,11 +103,13 @@ class Environment:
         try:
             if isinstance(instance, ecole.core.scip.Model):
                 self.model = instance.copy_orig()
+                self.model.set_params(self.scip_params)
+                self.dynamics.set_dynamics_random_state(self.model, self.random_engine)
             else:
-                self.model = ecole.core.scip.Model.from_file(instance)
-            self.model.set_params(self.scip_params)
-
-            self.dynamics.set_dynamics_random_state(self.model, self.random_engine)
+                self.model = ecole.core.scip.Model.prob_basic("")
+                self.model.set_params(self.scip_params)
+                self.dynamics.set_dynamics_random_state(self.model, self.random_engine)
+                self.model.read_problem(instance)
 
             # Reset data extraction functions
             self.reward_function.before_reset(self.model)
