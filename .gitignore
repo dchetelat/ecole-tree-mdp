@@ -177,3 +177,6 @@ dmypy.json
 
 # Scikit-build build folder
 _skbuild/
+
+# Mac
+.DS_Store
