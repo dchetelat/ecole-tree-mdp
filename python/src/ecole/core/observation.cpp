@@ -10,6 +10,7 @@
 
 #include "ecole/observation/hutter-2011.hpp"
 #include "ecole/observation/khalil-2016.hpp"
+#include "ecole/observation/milpbipartite.hpp"
 #include "ecole/observation/focusnode.hpp"
 #include "ecole/observation/nodebipartite.hpp"
 #include "ecole/observation/nothing.hpp"
