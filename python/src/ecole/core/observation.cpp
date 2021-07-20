@@ -12,6 +12,8 @@
 #include "ecole/observation/khalil-2016.hpp"
 #include "ecole/observation/milpbipartite.hpp"
 #include "ecole/observation/focusnode.hpp"
+#include "ecole/observation/capacity.hpp"
+#include "ecole/observation/weight.hpp"
 #include "ecole/observation/nodebipartite.hpp"
 #include "ecole/observation/nothing.hpp"
 #include "ecole/observation/pseudocosts.hpp"
@@ -186,6 +188,25 @@ void bind_submodule(py::module_ const& m) {
 	def_before_reset(focus_node, R"(Do nothing.)");
 	def_extract(focus_node, "Extract a new :py:class:`FocusNodeObs`.");
 
+	// Capacity observation
+	auto capacity = py::class_<Capacity>(m, "Capacity", R"(
+ 		Returns capacity of knapsacks per variable.
+ 	)");
+	capacity.def(py::init<>());
+	def_before_reset(capacity, R"(Do nothing.)");
+	def_extract(capacity, "Extract capacity");
+
+
+	// Weight observation
+	auto weight = py::class_<Weight>(m, "Weight", R"(
+ 		Returns weight of the item per variable.
+ 	)");
+	weight.def(py::init<>());
+	def_before_reset(weight, R"(Do nothing.)");
+	def_extract(weight, "Extract weight");
+
+
+
 	// MILP bipartite observation
 	auto milp_bipartite_obs =
 		auto_class<MilpBipartiteObs>(m, "MilpBipartiteObs", R"(
@@ -306,7 +327,7 @@ void bind_submodule(py::module_ const& m) {
 		.. [Khalil2016]
 			Khalil, Elias Boutros, Pierre Le Bodic, Le Song, George Nemhauser, and Bistra Dilkina.
 			"`Learning to branch in mixed integer programming.
-			<https://dl.acm.org/doi/10.5555/3015812.3015920>`_"
+			<https://web.archive.org/web/20200812151256/https://www.cc.gatech.edu/~lsong/papers/KhaLebSonNemDil16.pdf>`_"
 			*Thirtieth AAAI Conference on Artificial Intelligence*. 2016.
 	)")
 			.def_auto_copy()
@@ -411,7 +432,7 @@ void bind_submodule(py::module_ const& m) {
 		.. [Hutter2011]
 			Hutter, Frank, Hoos, Holger H., and Leyton-Brown, Kevin.
 			"`Sequential model-based optimization for general algorithm configuration.
-			<https://doi.org/10.1007/978-3-642-25566-3_40>`_"
+			<https://www.cs.ubc.ca/~hutter/papers/10-TR-SMAC.pdf>`_"
 			*International Conference on Learning and Intelligent Optimization*. 2011.
 	)")
 											.def_auto_copy()

@@ -36,6 +36,8 @@ add_library(
 	src/observation/hutter-2011.cpp
 	src/observation/strongbranchingscores.cpp
 	src/observation/pseudocosts.cpp
+        src/observation/capacity.cpp
+        src/observation/weight.cpp
 
 	src/dynamics/branching.cpp
 	src/dynamics/branching-sum.cpp
@@ -119,14 +121,13 @@ find_or_download_package(
 )
 find_or_download_package(
 	NAME fmt
-	URL https://github.com/fmtlib/fmt/archive/8.0.1.tar.gz
-	URL_HASH SHA256=b06ca3130158c625848f3fb7418f235155a4d389b2abc3a6245fb01cb0eb1e01
+	URL https://github.com/fmtlib/fmt/archive/7.1.3.tar.gz
+	URL_HASH SHA256=5cae7072042b3043e12d53d50ef404bbb76949dad1de368d7f993a15c8c05ecc
 	CONFIGURE_ARGS
 		-D FMT_TEST=OFF
 		-D FMT_DOC=OFF
 		-D FMT_INSTALL=ON
 		-D CMAKE_BUILD_TYPE=Release
-		-D BUILD_SHARED_LIBS=OFF
 		-D CMAKE_POSITION_INDEPENDENT_CODE=${CMAKE_POSITION_INDEPENDENT_CODE}
 )
 find_or_download_package(
